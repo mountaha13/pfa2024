@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secteurs</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/5.3.3/css/bootstrap.min.css">
+    <style>
+        @media screen and (max-width: 1280px) {
+            body, input, select, textarea {
+                font-size: 12pt;
+            }
+        }
+
+        @media screen and (max-width: 1680px) {
+            body, input, select, textarea {
+                font-size: 14pt;
+            }
+        }
+
+        body, input, select, textarea {
+            color: #585858;
+            font-family: "Source Sans Pro", Helvetica, sans-serif;
+            font-size: 16pt;
+            font-weight: 300;
+            line-height: 1.75;
+        }
+
+        body {
+            background: #c0b3b3;
+            -ms-overflow-style: scrollbar;
+            -webkit-text-size-adjust: none;
+            line-height: 1;
+        }
+
+        html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            font-size: 100%;
+            font: inherit;
+            vertical-align: baseline;
+        }
+
+        *, *:before, *:after {
+            box-sizing: inherit;
+        }
+
+        /* Custom styles for the sectors page */
+        .tiles {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 2em;
+            justify-content: center;
+        }
+
+        .tiles .tile {
+            margin: 1em;
+            padding: 0;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            flex: 0 0 30%; /* Ajustement pour 3 images par ligne */
+            max-width: 300px; /* Taille maximale de chaque image */
+            position: relative;
+            text-align: center;
+            color: white;
+        }
+
+        .tiles .tile:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .tiles .image {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .tiles .image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .tiles h2 {
+            font-size: 1.5em;
+            margin: 0;
+            padding: 0.5em;
+            background: rgba(0, 0, 0, 0.6);
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            color: white; /* Change the text color to white */
+            font-weight: bold; /* Make the text bold */
+        }
+
+        .tiles .content {
+            padding: 1em;
+            text-align: center;
+        }
+
+        .tiles .content p {
+            margin: 0;
+            font-size: 1em;
+        }
+
+        @media screen and (max-width: 768px) {
+            .tiles .tile {
+                flex: 0 0 48%; /* 2 images par ligne sur tablettes */
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .tiles .tile {
+                flex: 0 0 100%; /* 1 image par ligne sur mobiles */
+            }
+        }
+        .header-logo-container {
+            text-align: left;
+            margin-top: 0px;
+            background: #000000;
+            position: fixed; /* Fixes the position */
+            top: 0; /* Positions at the top of the page */
+            width: 100%; /* Ensures it spans the full width */
+             /* Adds a background color to prevent overlap */
+            z-index: 1000; /* Ensures it is above other elements */
+            padding: 3px 10px; ;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+
+        }
+
+        .logo-container {
+            display: inline-flex;
+            flex-direction: row;
+            align-items: center;
+        }
+
+        .logo {
+            width: 70px; /* Adjust the size of the logo as needed */
+            height: auto;
+            margin-right: 10px;
+            /* Space between logo and title */
+        }
+
+        .header-logo-container h1 {
+            font-size: 1.5em;
+            font-weight: bolder;
+            font-style: italic;
+
+
+            color: #e2c6c6; /* Adjust color as needed */
+        }
+
+        .header-description {
+            text-align: center;
+            margin-top: 100px; /* Space above the description */
+        }
+
+        .header-description p {
+            font-size: 1.2em;
+            color: #666; /* Adjust color as needed */
+        }
+
+    </style>
+</head>
+
+<body class="is-preload">
+<header id="header">
+    <div class="inner">
+        <!-- Logo and Title -->
+        <div class="header-logo-container">
+            <div class="logo-container">
+                <img src="/images/prop1.PNG" alt="Cartline Logo" class="logo">
+                <h1>CARTLINE</h1>
+            </div>
+        </div>
+
+        <!-- Description -->
+        <div class="header-description">
+            <p>Votre solution de gestion d'entreprise</p>
+        </div>
+    </div>
+</header>
+
+<!-- Wrapper -->
+<div id="wrapper">
+    <section class="tiles">
+        <article class="tile style1">
+                <span class="image">
+                    <img src="/images/ecole.PNG" alt="Secteur 1" />
+                </span>
+            <a th:href="@{/entreprises/by-secteur(secteur='Informatique')}">
+                <h2>ECOLES</h2>
+
+
+                <div class="content">
+
+                </div>
+            </a>
+        </article>
+        <article class="tile style2">
+                <span class="image">
+                    <img src="/images/hopital.PNG" alt="Secteur 2" />
+                </span>
+            <a href="/secteur2">
+                <h2>HOPITAUX</h2>
+                <div class="content">
+
+                </div>
+            </a>
+        </article>
+        <article class="tile style3">
+                <span class="image">
+                    <img src="/images/banque.PNG" alt="Secteur 3" />
+                </span>
+            <a href="/secteur3">
+                <h2>BANQUES</h2>
+                <div class="content">
+
+                </div>
+            </a>
+        </article>
+        <article class="tile style3">
+                <span class="image">
+                    <img src="/images/restaurant.PNG" alt="Secteur 3" />
+                </span>
+            <a href="/secteur3">
+                <h2>RESTAURANTS</h2>
+                <div class="content">
+
+                </div>
+            </a>
+        </article>
+        <article class="tile style3">
+                <span class="image">
+                    <img src="/images/entreprise.PNG" alt="Secteur 3" />
+                </span>
+            <a href="/secteur3">
+                <h2>ENTREPRISES</h2>
+                <div class="content">
+
+                </div>
+            </a>
+        </article>
+        <article class="tile style3">
+                <span class="image">
+                    <img src="/images/sport.PNG" alt="Secteur 3" />
+                </span>
+            <a href="/secteur3">
+                <h2>SPORT</h2>
+                <div class="content">
+
+                </div>
+            </a>
+        </article>
+
+        
+    </section>
+</div>
+</body>
+</html>

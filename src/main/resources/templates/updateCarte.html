@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Modifier Carte</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/5.3.3/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h2>Modifier Carte</h2>
+    <form th:action="@{/updateCarte}" method="post">
+        <input type="hidden" name="id" th:value="${carteToBeUpdated.id}">
+        <div class="form-group">
+            <label for="adresse">Adresse</label>
+            <input type="text" class="form-control" id="adresse" name="adresse" th:value="${carteToBeUpdated.adresse}">
+        </div>
+        <div class="form-group">
+            <label for="heureOuverture">Heure d'Ouverture</label>
+            <input type="time" class="form-control" id="heureOuverture" name="heureOuverture" th:value="${carteToBeUpdated.heureOuverture}">
+        </div>
+        <div class="form-group">
+            <label for="heureFermeture">Heure de Fermeture</label>
+            <input type="time" class="form-control" id="heureFermeture" name="heureFermeture" th:value="${carteToBeUpdated.heureFermeture}">
+        </div>
+        <div class="form-group">
+            <label for="numeroTelephone">Numéro de Téléphone</label>
+            <input type="text" class="form-control" id="numeroTelephone" name="numeroTelephone" th:value="${carteToBeUpdated.numeroTelephone}">
+        </div>
+        <div class="form-group">
+            <label for="emailProfessionnel">Email Professionnel</label>
+            <input type="email" class="form-control" id="emailProfessionnel" name="emailProfessionnel" th:value="${carteToBeUpdated.emailProfessionnel}">
+        </div>
+        <div class="form-group">
+            <label for="imageUrl">URL de l'Image</label>
+            <input type="text" class="form-control" id="imageUrl" name="imageUrl" th:value="${carteToBeUpdated.imageUrl}">
+        </div>
+        <div class="form-group">
+            <label>Image Actuelle:</label>
+            <img th:src="${carteToBeUpdated.imageUrl}" alt="Image de la carte" class="img-thumbnail">
+        </div>
+        <button type="submit" class="btn btn-primary">Modifier</button>
+    </form>
+</div>
+</body>
+</html>

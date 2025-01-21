@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <title>Modifier Entreprise</title>
+    <link rel="stylesheet" type="text/css" href="webjars/bootstrap/5.3.3/css/bootstrap.min.css"/>
+</head>
+<body>
+<div class="p-3 m-2">
+    <div class="card">
+        <div class="card-header">Modifier Entreprise</div>
+        <div class="card-body">
+            <form action="/updateEntreprise" method="post">
+                <input type="hidden" name="id" th:value="${entrepriseToBeUpdated.id}"/>
+
+                <div class="form-group">
+                    <label for="nom">Nom</label>
+                    <input type="text" class="form-control" id="nom" name="nom" th:value="${entrepriseToBeUpdated.nom}"/>
+                </div>
+
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <textarea class="form-control" id="description" name="description" th:text="${entrepriseToBeUpdated.description}"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="secteur">Secteur</label>
+                    <select id="secteur" name="secteurId" class="form-control">
+                        <option th:each="secteur : ${secteurs}"
+                                th:value="${secteur.id}"
+                                th:text="${secteur.nom}"
+                                th:selected="${secteur.id} == ${entrepriseToBeUpdated.secteur.id}">
+                        </option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="adresse">Adresse</label>
+                    <input type="text" class="form-control" id="adresse" name="adresse" th:value="${carte.adresse}"/>
+                </div>
+
+                <div class="form-group">
+                    <label for="heureOuverture">Heure Ouverture</label>
+                    <input type="time" class="form-control" id="heureOuverture" name="heureOuverture" th:value="${carte.heureOuverture}"/>
+                </div>
+
+                <div class="form-group">
+                    <label for="heureFermeture">Heure Fermeture</label>
+                    <input type="time" class="form-control" id="heureFermeture" name="heureFermeture" th:value="${carte.heureFermeture}"/>
+                </div>
+
+                <div class="form-group">
+                    <label for="numeroTelephone">Numéro de Téléphone</label>
+                    <input type="text" class="form-control" id="numeroTelephone" name="numeroTelephone" th:value="${carte.numeroTelephone}"/>
+                </div>
+
+                <div class="form-group">
+                    <label for="emailProfessionnel">Email Professionnel</label>
+                    <input type="email" class="form-control" id="emailProfessionnel" name="emailProfessionnel" th:value="${carte.emailProfessionnel}"/>
+                </div>
+
+                <div class="form-group">
+                    <label for="imageUrl">Image URL</label>
+                    <input type="text" class="form-control" id="imageUrl" name="imageUrl" th:value="${carte.imageUrl}"/>
+                </div>
+
+                <input type="hidden" name="carteId" th:value="${carte.id}"/>
+
+                <button type="submit" class="btn btn-primary">Modifier</button>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

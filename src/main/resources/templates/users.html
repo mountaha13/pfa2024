@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Entreprises</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/5.3.3/css/bootstrap.min.css">
+<style>
+    .header-logo-container {
+        text-align: left;
+        margin-top: 0px;
+        background: #000000;
+        position: fixed; /* Fixes the position */
+        top: 0; /* Positions at the top of the page */
+        width: 100%; /* Ensures it spans the full width */
+        z-index: 1000; /* Ensures it is above other elements */
+        padding: 3px 10px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .logo-container {
+        display: inline-flex;
+        flex-direction: row;
+        align-items: center;
+    }
+     body, div {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        font-size: 100%;
+        font: inherit;
+        vertical-align: baseline;
+    }
+     h2{
+         text-align: center;
+         font-weight: bolder;
+
+     }
+
+
+
+    .logo {
+        width: 70px; /* Adjust the size of the logo as needed */
+        height: auto;
+        margin-right: 10px; /* Space between logo and title */
+    }
+
+    .header-logo-container h1 {
+        font-size: 1.5em;
+        font-weight:bolder;
+        font-style: italic;
+        color: #e2c6c6; /* Adjust color as needed */
+
+
+    }
+    .card{
+        margin-top: 50px;
+    }
+
+
+
+    .header-description p {
+        font-size: 1.2em;
+        color: #666; /* Adjust color as needed */
+    }
+
+    .custom-btn {
+        background-color: #007bff; /* Bootstrap primary color */
+        color: white;
+        padding: 10px 20px;
+        font-size: 16px;
+        border: none;
+        border-radius: 5px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        margin: 5px 2px;
+        transition-duration: 0.4s;
+        cursor: pointer;
+    }
+
+    .custom-btn:hover {
+        background-color: #0056b3;
+        color: white;
+    }
+
+
+
+</style>
+
+</head>
+
+<body class="is-preload">
+<header id="header">
+    <div class="inner">
+        <!-- Logo and Title -->
+        <div class="header-logo-container">
+            <div class="logo-container">
+                <img src="/images/prop1.PNG" alt="Cartline Logo" class="logo">
+                <h1>CARTLINE</h1>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+<div class="p-3 m-3">
+    <div class="card">
+    <div class="card-header">
+        <h2>Liste des Entreprises</h2>
+
+
+        <div class="card-body">
+
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nom</th>
+                    <th>Description</th>
+                    <th>Secteur</th>
+                    <th>Adresse</th>
+                    <th>Détails </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="e: ${entreprises}">
+                    <td th:text="${e.id}"></td>
+                    <td th:text="${e.nom}"></td>
+                    <td th:text="${e.description}"></td>
+                    <td th:text="${e.secteur.nom}"></td>
+                    <td th:text="${e.carte.adresse}"></td>
+                    <td><a href="" class="custom-btn">Carte</a></td>
+
+
+                </tr>
+                </tbody>
+            </table>
+
+            <ul class="nav nav-pills">
+                <li  th:each="page, status: ${pages}"><a th:href="@{/index(page=${status.index})}"
+                                                         th:class="${status.index == page} ? 'btn btn-primary' : 'btn btn-outline-primary'"
+                                                         th:text="${status.index}" ></a>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+</div>
+</div>
+</body>
+</html>

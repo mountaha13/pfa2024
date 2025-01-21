@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <title>Ajouter Carte</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/5.3.3/css/bootstrap.min.css"/>
+</head>
+<body>
+<div class="p-3 m-2">
+    <div class="card">
+        <div class="card-header">Ajouter Carte</div>
+        <div class="card-body">
+            <form action="/addCarte" method="post">
+                <div class="form-group">
+                    <label for="adresse">Adresse:</label>
+                    <input type="text" class="form-control" id="adresse" name="adresse" required>
+                </div>
+                <div class="form-group">
+                    <label for="heureOuverture">Heure d'Ouverture:</label>
+                    <input type="time" class="form-control" id="heureOuverture" name="heureOuverture" required>
+                </div>
+                <div class="form-group">
+                    <label for="heureFermeture">Heure de Fermeture:</label>
+                    <input type="time" class="form-control" id="heureFermeture" name="heureFermeture" required>
+                </div>
+                <div class="form-group">
+                    <label for="numeroTelephone">Numéro de Téléphone:</label>
+                    <input type="text" class="form-control" id="numeroTelephone" name="numeroTelephone" required>
+                </div>
+                <div class="form-group">
+                    <label for="emailProfessionnel">Email Professionnel:</label>
+                    <input type="email" class="form-control" id="emailProfessionnel" name="emailProfessionnel" required>
+                </div>
+                <div class="form-group">
+                    <label for="imageUrl">URL de l'Image:</label>
+                    <input type="text" class="form-control" id="imageUrl" name="imageUrl" required>
+                </div>
+
+                <h3>Entreprise Associée</h3>
+                <div class="form-group">
+                    <label for="entrepriseId">Nom de l'entreprise:</label>
+                    <select class="form-control" id="entrepriseId" name="entrepriseId" required>
+                        <option th:each="entreprise : ${entreprises}" th:value="${entreprise.id}" th:text="${entreprise.nom}"></option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn btn-primary mt-3">Ajouter</button>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

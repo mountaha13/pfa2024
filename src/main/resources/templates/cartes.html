@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cartes</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/5.3.3/css/bootstrap.min.css">
+</head>
+<body>
+<div class="p-3 m-3">
+    <div class="card">
+        <div class="card-header">
+            Liste des Cartes
+
+            <a th:href="@{/addCarte}" class="btn btn-primary float-end">Ajouter Carte</a>
+        </div>
+
+
+
+
+
+        <div class="card-body">
+            <form th:action="@{/searchCartes}" method="get" class="mb-3">
+                <div class="input-group">
+                <input type="text" class="form-control" name="keyword" placeholder="Recherche par adresse">
+                <button class="btn btn-outline-secondary" type="submit" id="button-addon">Rechercher</button>
+                </div>
+            </form>
+
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Adresse</th>
+                    <th>Heure Ouverture</th>
+                    <th>Heure Fermeture</th>
+                    <th>Numéro de Téléphone</th>
+                    <th>Email Professionnel</th>
+                    <th>Image</th>
+                    <th>Entreprise</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="carte : ${cartes}">
+                    <td th:text="${carte.id}"></td>
+                    <td th:text="${carte.adresse}"></td>
+                    <td th:text="${carte.heureOuverture}"></td>
+                    <td th:text="${carte.heureFermeture}"></td>
+                    <td th:text="${carte.numeroTelephone}"></td>
+                    <td th:text="${carte.emailProfessionnel}"></td>
+                    <td>
+                        <img th:src="${carte.imageUrl}" alt="Image de la carte" style="max-width: 100px;">
+                    </td>
+                    <td th:text="${carte.entreprise != null ? carte.entreprise.nom : 'Aucune'}"></td>
+                    <td>
+                        <a th:href="@{/editCarte(id=${carte.id})}" class="btn btn-primary">Modifier</a>
+                        <a th:href="@{/deleteCarte(id=${carte.id})}" class="btn btn-danger"
+                           onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette carte ?');">Supprimer</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>

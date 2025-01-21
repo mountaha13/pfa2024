@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <title>Ajouter Entreprise</title>
+    <link rel="stylesheet" type="text/css" href="webjars/bootstrap/5.3.3/css/bootstrap.min.css"/>
+</head>
+<body>
+<div class="p-3 m-2">
+    <div class="card">
+        <div class="card-header">Ajouter Entreprise</div>
+        <div class="card-body">
+            <form action="/addEntreprise" method="post">
+                <div class="form-group">
+                    <label for="nom">Nom:</label>
+                    <input type="text" class="form-control" id="nom" name="nom" required>
+                </div>
+                <div class="form-group">
+                    <label for="description">Description:</label>
+                    <input type="text" class="form-control" id="description" name="description" required>
+                </div>
+                <div class="form-group">
+                    <label for="secteur">Secteur:</label>
+                    <select class="form-control" id="secteur" name="secteurId" required>
+                        <option th:each="secteur : ${secteurs}" th:value="${secteur.id}" th:text="${secteur.nom}"></option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="adresse">Adresse:</label>
+                    <input type="text" class="form-control" id="adresse" name="adresse" required>
+                </div>
+                <div class="form-group">
+                    <label for="heureOuverture">Heure d'Ouverture:</label>
+                    <input type="time" class="form-control" id="heureOuverture" name="heureOuverture" required>
+                </div>
+                <div class="form-group">
+                    <label for="heureFermeture">Heure de Fermeture:</label>
+                    <input type="time" class="form-control" id="heureFermeture" name="heureFermeture" required>
+                </div>
+                <div class="form-group">
+                    <label for="numeroTelephone">Numéro de Téléphone:</label>
+                    <input type="text" class="form-control" id="numeroTelephone" name="numeroTelephone" required>
+                </div>
+                <div class="form-group">
+                    <label for="emailProfessionnel">Email Professionnel:</label>
+                    <input type="email" class="form-control" id="emailProfessionnel" name="emailProfessionnel" required>
+                </div>
+                <div class="form-group">
+                    <label for="imageUrl">URL de l'Image:</label>
+                    <input type="text" class="form-control" id="imageUrl" name="imageUrl" required>
+                </div>
+                <button type="submit" class="btn btn-primary mt-3">Ajouter</button>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

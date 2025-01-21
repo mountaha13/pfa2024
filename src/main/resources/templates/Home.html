@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cartline - Home</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/5.3.3/css/bootstrap.min.css">
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .background-image {
+            background-image: url("/images/homee.png"); /* Chemin vers votre image */
+            height: 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .content {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        h1 {
+            font-size: 4em;
+            color: #333;
+
+            font-weight: bold;
+            font-style: normal;
+        }
+
+        .description-box {
+            margin: 20px 0;
+            padding: 10px;
+            border: 2px solid #333;
+            display: inline-block;
+        }
+
+        .description-box p {
+            font-size: 1.2em;
+            color: #666;
+        }
+        .buttons .btn {
+            margin: 5px;
+            font-size: 1.1em;
+            background-color: rosybrown;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+
+        .buttons .btn:hover {
+            background-color: #333;
+        }
+
+
+
+
+    </style>
+</head>
+<body>
+
+<div class="background-image">
+    <div class="content">
+        <div class="description-box">
+            <h1>CARTLINE</h1>
+            <p>Bienvenue sur Cartline, votre solution de gestion d'entreprise.</p>
+        </div>
+        <div class="buttons">
+            <a href="/secteurs" class="btn btn-primary">Secteurs</a>
+            <a href="/rechercher" class="btn btn-secondary">Rechercher</a>
+            <a href="/login" class="btn btn-success">Se connecter</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>
